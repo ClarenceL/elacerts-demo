@@ -2,15 +2,10 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import {
   IonApp,
-  IonMenu,
   IonIcon,
-  IonLabel,
   IonHeader,
   IonToolbar,
-  IonItem,
-  IonTitle,
   IonContent,
-  IonCard,
   IonPage,
   IonButtons,
   IonMenuButton,
@@ -19,10 +14,6 @@ import {
   IonFab,
   IonFabButton,
 
-
-  IonTabBar,
-  IonTabButton,
-  IonTabs
 } from '@ionic/react'
 import {
   addCircle,
@@ -30,13 +21,15 @@ import {
 } from 'ionicons/icons'
 
 import Menu from './Menu'
+import Header from './Header'
 
 import ListCert from './pages/ListCert'
 import ListStudent from './pages/ListStudent'
 import Profile from './pages/Profile'
-import Tab2 from './pages/Tab2'
-import Tab3 from './pages/Tab3'
 import Details from './pages/Details'
+import Loading from './pages/Loading'
+
+import { ActionSetDID, ActionSetInfo, ActionLoggingIn, ProfileState } from './store/redux/profile'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -57,26 +50,46 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme.css'
 
-const App: React.FC = () => {
+import { connect, useDispatch } from 'react-redux'
+
+import { useSignIn } from './hooks/useSignIn'
+
+const App: React.FC = (props: any) => {
+
+  const profile = (props.profile as ProfileState)
+  const dispatch = useDispatch()
+
+  // TODO: redo with Thunk
+  const [signIn] = useSignIn((did: string, credentials:any) => {
+
+    if(credentials.length) {
+      const user = credentials[0].credentialSubject
+      const {name, country} = user
+
+      dispatch(ActionSetInfo({name, country}))
+      dispatch(ActionSetDID(did))
+    }
+  })
+
+  // console.log("profile", JSON.stringify(profile))
+
+  /*
+  if (profile.did === null && profile.loading === false) {
+    dispatch(ActionLoggingIn())
+    signIn({name: true})
+    return <Loading></Loading>
+  }
+  */
 
   return (
     <IonApp>
-      <IonSplitPane contentId="main">
+        <IonSplitPane contentId="main">
 
-        <Menu></Menu>
+        <Menu/>
 
         <IonPage id="main">
-          <IonHeader className={'header-main'}>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonMenuButton></IonMenuButton>
-              </IonButtons>
-              <IonButtons slot="end">
-                <IonIcon icon={addCircle} size="large"></IonIcon>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
+          <Header/>
+          <IonContent className="app">
             <Switch>
               <Route path="/profile" component={Profile} exact={true}/>
               <Route path="/list" component={ListCert} exact={true}/>
@@ -93,16 +106,13 @@ const App: React.FC = () => {
         </IonPage>
       </IonSplitPane>
 
-      {/*
-      <Link to="/tab2" style={{position: 'absolute', bottom: 0}}>
-        tab2
-      </Link>
-      <Link to="/tab3" style={{position: 'absolute', bottom: 0, right: 0}}>
-        tab3
-      </Link>
-      */}
     </IonApp>
   )
 }
 
-export default App
+// this gets spread directly on props
+const mapStateToProps = (state) => {
+  return {profile: state.profile}
+}
+
+export default connect(mapStateToProps)(App)

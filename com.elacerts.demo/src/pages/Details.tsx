@@ -1,5 +1,5 @@
-import React from 'react';
-import { IonBackButton, IonButtons, IonHeader, IonPage, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import React from 'react'
+import { IonBackButton, IonButtons, IonHeader, IonPage, IonToolbar, IonTitle, IonContent } from '@ionic/react'
 
 const Details: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const Details: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/tab2" />
+
           </IonButtons>
           <IonTitle>Detail</IonTitle>
         </IonToolbar>
@@ -16,7 +16,7 @@ const Details: React.FC = () => {
         <p>Details</p>
       </IonContent>
     </IonPage>
-  );
-};
+  )
+}
 
-export default Details;
+export default Details

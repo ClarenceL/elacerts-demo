@@ -37,13 +37,13 @@ class Tab1 extends React.Component {
           <IonButton onClick={this.closeApp}>Close the app</IonButton>
         </IonCardContent>
       </IonCard>
-    );
+    )
   }
 
   closeApp() {
     console.log("dApp is closing!")
-    appManager.close();
+    appManager.close()
   }
 }
 
-export default Tab1;
+export default Tab1

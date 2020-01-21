@@ -1,0 +1,39 @@
+{
+  "action": "credaccess",
+  "result": {
+    "did": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5",
+    "presentation": {
+      "type": "VerifiablePresentation",
+      "proof": {
+        "type": "ECDSAsecp256r1",
+        "verificationMethod": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5#primary",
+        "realm": "no-realm",
+        "nonce": "no-nonce",
+        "signature": "AtcFGT3HE0zu94BSIoTNGAa5t8DDuY3oatVCUQha80UXV480_UPg_bj-zojepaMt8mRPS-lKpvjmQxM9ei3A_w"
+      },
+      "verifiableCredential": [
+        {
+          "credentialId": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5#name",
+          "clazz": 5,
+          "type": [
+            "BasicProfileCredential",
+            "SelfProclaimedCredential"
+          ],
+          "issuer": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5",
+          "issuanceDate": "2020-01-21T12:40:31.000Z",
+          "expirationDate": "2020-02-05T12:40:31.000Z",
+          "credentialSubject": {
+            "id": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5",
+            "name": "Clarence2"
+          },
+          "proof": {
+            "type": "ECDSAsecp256r1",
+            "verificationMethod": "did:elastos:ihLw3XVRNLAX2QXcv1fq1ZyTXUyAfaduR5#primary",
+            "signature": "iQCWSLaGr-jdZ8RsWlLFcFDgqMjsrFNmS2R-_qngEgDbRRRztpgzsFWomTKObyU_vobzFc6ReQrnoeoW_IcXjA"
+          }
+        }
+      ]
+    }
+  },
+  "from": "org.elastos.trinity.dapp.did"
+}

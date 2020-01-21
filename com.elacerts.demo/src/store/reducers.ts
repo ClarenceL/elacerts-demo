@@ -1,20 +1,16 @@
-import { combineReducers } from 'redux'
-import routing from 'ion-router/reducer'
+import { combineReducers, Reducer } from 'redux'
 import { connectRouter } from 'connected-react-router'
 
-const default_state = {
-  init: false,
-}
+import profile from './redux/profile'
+import student from './redux/student'
+import certificate from './redux/certificate'
 
-const appReducer = (state = default_state) => {
-  // switch (action.type) {}
-
-  return state
-}
 
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
-  app: appReducer
+    ...profile,
+    ...student,
+    ...certificate
 })
 
 export default createRootReducer

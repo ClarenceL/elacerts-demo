@@ -1,17 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/lib/integration/react'
 import { ConnectedRouter } from 'connected-react-router'
-import configureStore, { history } from './store'
+import { store, persistor, history } from './store'
+import Loading from './pages/Loading'
 import App from './App'
-
-const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
+    <PersistGate loading={<Loading />} persistor={persistor}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 )

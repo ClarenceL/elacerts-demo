@@ -4,12 +4,16 @@ import {
 
   IonCardHeader,
   IonCardSubtitle,
-  IonCardContent
+  IonCardContent,
+
+  IonButton,
+  IonItem,
+  IonLabel
 } from '@ionic/react'
 
 import '../css/main.css'
 
-const Profile: React.FC = () => {
+const Profile: React.FC = (props: any) => {
 
   return (
     <IonCard mode="ios" className="card-body">
@@ -18,10 +22,27 @@ const Profile: React.FC = () => {
       </IonCardHeader>
 
       <IonCardContent>
-        Hello World
+        <IonItem>
+          <IonLabel color="medium">
+            Name
+          </IonLabel>
+          Clarence Liu
+        </IonItem>
+        <IonItem>
+          <IonLabel color="medium">
+            Country
+          </IonLabel>
+          Canada
+        </IonItem>
       </IonCardContent>
     </IonCard>
   )
 }
 
+// Note: this calls bindActionCreators automatically and calls dispatch,
+// don't use this if you want to use thunk/async actions
+// const mapDispatchToProps = { ActionSetDID }
+
+
 export default Profile
+

@@ -179,6 +179,6 @@
   --ion-font-family: Montserrat, Helvetica Neue, san-serif;
 }
 
-ion-content {
+ion-content.app {
   --background: no-repeat 60% bottom url("/assets/images/elastOS71.png");
 }
