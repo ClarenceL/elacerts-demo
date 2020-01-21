@@ -29,19 +29,19 @@
   --ion-color-documentation: #b16be3;
   --ion-color-navigation: #6600cc;
 
-  --ion-color-primary: #0b2d42;
+  --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #002135;
-  --ion-color-primary-tint: #244258;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
 
-  --ion-color-secondary: #3c4b75;
+  --ion-color-secondary: #0cd1e8;
   --ion-color-secondary-rgb: 12, 209, 232;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #25375e;
-  --ion-color-secondary-tint: #4f5e89;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
 
   --ion-color-tertiary: #7044ff;
   --ion-color-tertiary-rgb: 112, 68, 255;
@@ -173,12 +173,4 @@
   --ion-toolbar-background: var(--ion-color-primary);
   --ion-toolbar-color: #fff;
   --ion-toolbar-color-activated: #fff;
-}
-
-:root {
-  --ion-font-family: Montserrat, Helvetica Neue, san-serif;
-}
-
-ion-content {
-  --background: no-repeat 60% bottom url("/assets/images/elastOS71.png");
 }

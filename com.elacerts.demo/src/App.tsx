@@ -2,17 +2,38 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import {
   IonApp,
+  IonMenu,
   IonIcon,
   IonLabel,
-  IonRouterOutlet,
+  IonHeader,
+  IonToolbar,
+  IonItem,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonPage,
+  IonButtons,
+  IonMenuButton,
+  IonSplitPane,
+
+  IonFab,
+  IonFabButton,
+
+
   IonTabBar,
   IonTabButton,
   IonTabs
 } from '@ionic/react'
-import {IonReactRouter} from '@ionic/react-router'
-import {apps, flash, send} from 'ionicons/icons'
-import { Link } from 'react-router-dom'
-import Tab1 from './pages/Tab1'
+import {
+  addCircle,
+  qrScanner
+} from 'ionicons/icons'
+
+import Menu from './Menu'
+
+import ListCert from './pages/ListCert'
+import ListStudent from './pages/ListStudent'
+import Profile from './pages/Profile'
 import Tab2 from './pages/Tab2'
 import Tab3 from './pages/Tab3'
 import Details from './pages/Details'
@@ -34,56 +55,54 @@ import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
 
 /* Theme variables */
-import './theme/variables.css'
+import './theme.css'
 
-const App: React.FC = () => (
-  <IonApp>
-    <Switch>
-      <Route path="/tab1" component={Tab1} exact={true} />
-      <Route path="/tab2" component={Tab2} exact={true} />
-      <Route path="/tab2/details" component={Details} />
-      <Route path="/tab3" component={Tab3} />
-      <Route exact path="/" render={() => <Redirect to="/tab1" />} />
-    </Switch>
-    <Link to="/tab2" style={{position: 'absolute', bottom: 0}}>
-      tab2
-    </Link>
-    <Link to="/tab3" style={{position: 'absolute', bottom: 0, right: 0}}>
-      tab3
-    </Link>
-  </IonApp>
-)
+const App: React.FC = () => {
 
-/*
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab2/details" component={Details} />
-          <Route path="/tab3" component={Tab3} />
-          <Route exact path="/" render={() => <Redirect to="/tab1" />} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={flash}/>
-            <IonLabel>Tab One</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={apps}/>
-            <IonLabel>Tab Two</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={send}/>
-            <IonLabel>Tab Three</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-)
-*/
+  return (
+    <IonApp>
+      <IonSplitPane contentId="main">
+
+        <Menu></Menu>
+
+        <IonPage id="main">
+          <IonHeader className={'header-main'}>
+            <IonToolbar>
+              <IonButtons slot="start">
+                <IonMenuButton></IonMenuButton>
+              </IonButtons>
+              <IonButtons slot="end">
+                <IonIcon icon={addCircle} size="large"></IonIcon>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <Switch>
+              <Route path="/profile" component={Profile} exact={true}/>
+              <Route path="/list" component={ListCert} exact={true}/>
+              <Route path="/students" component={ListStudent} exact={true}/>
+              <Route exact path="/" render={() => <Redirect to="/list"/>}/>
+            </Switch>
+
+            <IonFab vertical="bottom" horizontal="end" slot="fixed">
+              <IonFabButton color="secondary">
+                <IonIcon icon={qrScanner} size="large"></IonIcon>
+              </IonFabButton>
+            </IonFab>
+          </IonContent>
+        </IonPage>
+      </IonSplitPane>
+
+      {/*
+      <Link to="/tab2" style={{position: 'absolute', bottom: 0}}>
+        tab2
+      </Link>
+      <Link to="/tab3" style={{position: 'absolute', bottom: 0, right: 0}}>
+        tab3
+      </Link>
+      */}
+    </IonApp>
+  )
+}
 
 export default App

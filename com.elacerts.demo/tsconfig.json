@@ -22,7 +22,7 @@
       "node",
       "trinity-types"
     ],
-    "noImplicitAny":false,
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
