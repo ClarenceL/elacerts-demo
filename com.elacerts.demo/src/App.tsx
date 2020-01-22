@@ -29,6 +29,10 @@ import Profile from './pages/Profile'
 import Details from './pages/Details'
 import Loading from './pages/Loading'
 
+import { connect, useDispatch } from 'react-redux'
+
+import { useSignIn } from './hooks/useSignIn'
+
 import { ActionSetDID, ActionSetInfo, ActionLoggingIn, ProfileState } from './store/redux/profile'
 
 /* Core CSS required for Ionic components to work properly */
@@ -50,9 +54,6 @@ import '@ionic/react/css/display.css'
 /* Theme variables */
 import './theme.css'
 
-import { connect, useDispatch } from 'react-redux'
-
-import { useSignIn } from './hooks/useSignIn'
 
 const App: React.FC = (props: any) => {
 
@@ -72,14 +73,11 @@ const App: React.FC = (props: any) => {
   })
 
   // console.log("profile", JSON.stringify(profile))
-
-  /*
   if (profile.did === null && profile.loading === false) {
     dispatch(ActionLoggingIn())
     signIn({name: true})
     return <Loading></Loading>
   }
-  */
 
   return (
     <IonApp>

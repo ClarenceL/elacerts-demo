@@ -29,7 +29,8 @@ import {
 import {addCircle} from "ionicons/icons"
 import { useHistory } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
-import { ActionAddCert } from './store/redux/certificate'
+import { ActionAddCert, Cert } from './store/redux/certificate'
+import { signWithDID } from './service/signWithDID'
 
 const Header: React.FC = (props) => {
 
@@ -102,12 +103,21 @@ const CreateCertModal: React.FC<any> = (props) => {
   const dispatch = useDispatch()
 
   const submit = async () => {
+    /*
+    const proof = await signWithDID({
+      studentId,
+      degree,
+      year,
+      notes
+    })
+    */
     await dispatch(ActionAddCert({
       studentId,
       degree,
       year,
       notes
-    }))
+    } as Cert))
+    setShowModal(false)
   }
 
   return (

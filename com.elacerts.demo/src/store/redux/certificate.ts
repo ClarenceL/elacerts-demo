@@ -22,7 +22,8 @@ export interface Cert {
   studentId: string,
   degree: string,
   year: number,
-  notes: string
+  notes: string,
+  proof?: any
 }
 
 export interface CertState {
